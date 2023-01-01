@@ -3,7 +3,7 @@ import { json } from "@remix-run/node";
 
 import { useOptionalUser } from "~/utils";
 import { getPublicNoteListItems } from "~/models/note.server";
-import { NoteFollowButton } from "~/routes/resources/follow";
+import { NoteLikeButton } from "~/routes/resources/follow";
 
 export async function loader() {
   const noteListItems = await getPublicNoteListItems();
@@ -94,7 +94,7 @@ export default function Index() {
                       {noteListItem.body}
                     </p>
                   </div>
-                  <NoteFollowButton
+                  <NoteLikeButton
                     noteId={noteListItem.id}
                     render={(isFollowed) => (
                       <button

@@ -5,7 +5,7 @@ import invariant from "tiny-invariant";
 import { getLikedNote } from "~/models/note.server";
 import { requireUserId } from "~/session.server";
 
-import { NoteFollowButton } from '../resources/follow';
+import { NoteLikeButton } from '../resources/follow';
 
 export async function loader({ request, params }) {
   const userId = await requireUserId(request);
@@ -27,7 +27,7 @@ export default function NoteDetailsPage() {
       <p className="text-sm text-gray-500">
         {note.isPublic ? "Public" : "Private"}
       </p>
-      <NoteFollowButton
+      <NoteLikeButton
         className="absolute top-0 right-0"
         redirectPath={`/liked`}
         noteId={note.id}
